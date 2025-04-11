@@ -1,0 +1,83 @@
+body {
+  background-color: #ffffff;
+  color: #000000;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.profile-pic {
+    margin-bottom: 15px;
+    border: 2px solid #ddd;
+    padding: 5px;
+}
+
+.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.dark-mode .cv-header {
+  background-color: #1e1e1e;
+}
+
+h1, h3 {
+  color: #0066cc;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.dark-mode h1, .dark-mode h3 {
+  color: #66b2ff;
+}
+
+.section-title {
+  border-bottom: 2px solid #0066cc;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+}
+
+.dark-mode .section-title {
+  border-color: #66b2ff;
+}
+
+a {
+  color: #0066cc;
+}
+
+.dark-mode a {
+  color: #66b2ff;
+}
+
+.cv-header {
+  background-color: #f0f8ff;
+  padding: 2rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.info-label {
+  font-weight: bold;
+}
+
+.row > div {
+  margin-bottom: 10px;
+}
+
+.toggle-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+}
+
+.btn-theme {
+  border: none;
+  padding: 6px 14px;
+  background-color: #0066cc;
+  color: white;
+  border-radius: 5px;
+}
+
+.dark-mode .btn-theme {
+  background-color: #66b2ff;
+  color: #121212;
+}
