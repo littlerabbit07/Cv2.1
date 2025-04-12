@@ -9,8 +9,9 @@
 </head>
 <body>
 
-  <div class="toggle-btn">
+  <div class="toggle-btn d-flex justify-content-between">
     <button class="btn-theme" onclick="toggleTheme()">🌙 Modo Noche</button>
+    <button class="btn-lang" onclick="toggleLanguage()">🌐 Cambiar Idioma</button>
   </div>
 
   <div class="container py-5">
@@ -18,23 +19,36 @@
     <div class="cv-header d-flex align-items-center">
         <img src="Img/profile_picture.png" alt="Profile Picture" class="profile-pic rounded-circle me-4" width="110">
         <div>
-          <h1>Gerónimo Ríos Pisoni</h1>
-          <h5>Estudiante en Analista en Sistemas</h5>
+          <h1 data-lang="es">Gerónimo Ríos Pisoni</h1>
+          <h1 data-lang="en" style="display: none;">Gerónimo Ríos Pisoni</h1>
+          <h5 data-lang="es">Estudiante en Analista en Sistemas</h5>
+          <h5 data-lang="en" style="display: none;">Systems Analyst Student</h5>
           <p>
-            <span class="info-label">Email:</span> <a href="mailto:geronimo.rios.pisoni@gmail.com" target="_blank" rel="noopener noreferrer">geronimo.rios.pisoni@gmail.com</a><br>
-            <span class="info-label">WhatsApp:</span> <a href="https://wa.link/ddeukl" target="_blank" rel="noopener noreferrer">(294)-4578896</a><br>
-            <span class="info-label">Edad:</span> 33<br>
-            <span class="info-label">Domicilio:</span> <a href="https://wa.link/ddeukl" target="_blank" rel="noopener noreferrer">2FQ8+6M El Bolsón, Río Negro, Argentina</a>
+            <span class="info-label" data-lang="es">Email:</span>
+            <span class="info-label" data-lang="en" style="display: none;">Email:</span>
+            <a href="mailto:geronimo.rios.pisoni@gmail.com" target="_blank" rel="noopener noreferrer">geronimo.rios.pisoni@gmail.com</a><br>
+            <span class="info-label" data-lang="es">WhatsApp:</span>
+            <span class="info-label" data-lang="en" style="display: none;">WhatsApp:</span>
+            <a href="https://wa.link/ddeukl" target="_blank" rel="noopener noreferrer">(294)-4578896</a><br>
+            <span class="info-label" data-lang="es">Edad:</span>
+            <span class="info-label" data-lang="en" style="display: none;">Age:</span> 33<br>
+            <span class="info-label" data-lang="es">Domicilio:</span>
+            <span class="info-label" data-lang="en" style="display: none;">Address:</span>
+            <a href="https://wa.link/ddeukl" target="_blank" rel="noopener noreferrer">2FQ8+6M El Bolsón, Río Negro, Argentina</a>
           </p>
         </div>
       </div>
 
     <div class="mb-5">
-      <h3 class="section-title">Extracto Profesional</h3>
+      <h3 class="section-title" data-lang="es">Extracto Profesional</h3>
+      <h3 class="section-title" data-lang="en" style="display: none;">Professional Summary</h3>
       <ul>
-        <li>Experiencia en hardware y software de computadoras (Windows y Linux)</li>
-        <li>Manejo de herramientas tecnológicas para resolución de problemas</li>
-        <li>Capacidad de búsqueda y recopilación de información en medios digitales</li>
+        <li data-lang="es">Experiencia en hardware y software de computadoras (Windows y Linux)</li>
+        <li data-lang="en" style="display: none;">Experience in computer hardware and software (Windows and Linux)</li>
+        <li data-lang="es">Manejo de herramientas tecnológicas para resolución de problemas</li>
+        <li data-lang="en" style="display: none;">Proficient in using technological tools for problem-solving</li>
+        <li data-lang="es">Capacidad de búsqueda y recopilación de información en medios digitales</li>
+        <li data-lang="en" style="display: none;">Ability to search and gather information from digital media</li>
       </ul>
     </div>
 
@@ -100,11 +114,34 @@
       localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
     }
 
-    // On load: apply saved theme
+    function toggleLanguage() {
+      const elements = document.querySelectorAll('[data-lang]');
+      elements.forEach(el => {
+        if (el.style.display === 'none') {
+          el.style.display = '';
+        } else {
+          el.style.display = 'none';
+        }
+      });
+
+      // Save language preference
+      const currentLang = document.documentElement.lang;
+      const newLang = currentLang === 'es' ? 'en' : 'es';
+      document.documentElement.lang = newLang;
+      localStorage.setItem('language', newLang);
+    }
+
+    // On load: apply saved theme and language
     window.onload = () => {
       const savedTheme = localStorage.getItem('theme');
       if (savedTheme === 'dark') {
         document.body.classList.add('dark-mode');
+      }
+
+      const savedLanguage = localStorage.getItem('language');
+      if (savedLanguage) {
+        document.documentElement.lang = savedLanguage;
+        toggleLanguage(); // Ensure the correct language is displayed
       }
     };
   </script>
