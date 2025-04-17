@@ -6,12 +6,15 @@
   <title>Gerónimo Ríos Pisoni - CV</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 </head>
 <body>
 
   <div class="toggle-btn d-flex justify-content-between">
     <button class="btn-theme" onclick="toggleTheme()">🌙 Modo Noche</button>
     <button class="btn-lang" onclick="toggleLanguage()">🌐 Cambiar Idioma</button>
+    <button id="download-pdf" class="btn btn-primary">📄 Descargar PDF</button>
   </div>
 
   <div class="container py-5">
@@ -78,8 +81,9 @@
 
     <div class="mb-5">
       <h3 class="section-title">Experiencia Laboral</h3>
-      <p><strong>Imprenta Digital Fusión Gráfica 2020</strong></p>
-      <ul>
+      <p><strong></strong></p>
+      <ul class="two-columns">
+        <li>Imprenta Digital Fusión Gráfica 2020</li>
         <li>M. Office, Corel Draw, Adobe</li>
         <li>Atención al público, Caja, Proveedores</li>
       </ul>
@@ -91,9 +95,11 @@
 
     <div class="mb-5">
       <h3 class="section-title">Conocimientos Técnicos</h3>
-      <ul>
-        <li>Soporte Técnico, Windows, Android</li>
-        <li>Electricidad y componentes electricos</li>
+      <ul class="two-columns">
+        <li>Soporte Técnico Linux, Windows, Android</li>
+        <li>Electricidad domiciliaria y componentes electricos</li>
+        <li>Grabación y edición de audio y video</li>
+        <li>Grabación y edición de audio y video</li>
         <li>Grabación y edición de audio y video</li>
       </ul>
     </div>
@@ -148,6 +154,21 @@
         toggleLanguage(); // Ensure the correct language is displayed
       }
     };
+
+    document.getElementById('download-pdf').addEventListener('click', () => {
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF();
+      const content = document.body;
+
+      pdf.html(content, {
+        callback: function (doc) {
+          doc.save('CV-Gerónimo-Ríos-Pisoni.pdf');
+        },
+        x: 10,
+        y: 10,
+        width: 190
+      });
+    });
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

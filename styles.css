@@ -5,6 +5,12 @@ body {
   transition: background-color 0.3s, color 0.3s;
 }
 
+.two-columns {
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+}
+
 .profile-pic {
     margin-bottom: 15px;
     border: 2px solid #ddd;
@@ -21,7 +27,7 @@ body {
 }
 
 h1, h3 {
-  color: #0066cc;
+  color: #0066cc36;
   text-transform: uppercase;
   font-weight: bold;
 }
