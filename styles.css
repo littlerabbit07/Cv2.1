@@ -27,13 +27,13 @@ body {
 }
 
 h1, h3 {
-  color: #0066cc36;
+  color: #0066cc;
   text-transform: uppercase;
   font-weight: bold;
 }
 
 .dark-mode h1, .dark-mode h3 {
-  color: #66b2ff;
+  color: #0066cc;
 }
 
 .section-title {
@@ -43,7 +43,7 @@ h1, h3 {
 }
 
 .dark-mode .section-title {
-  border-color: #66b2ff;
+  border-color: #003e7c;
 }
 
 a {
@@ -70,9 +70,10 @@ a {
 }
 
 .toggle-btn {
-  position: absolute;
-  top: 20px;
-  right: 30px;
+  position: fixed; /* Change from absolute to fixed */
+  top: 20px;       /* Keep the top margin */
+  right: 30px;     /* Keep the right margin */
+  z-index: 1000;   /* Ensure it stays above other elements */
 }
 
 .btn-theme {
@@ -84,6 +85,15 @@ a {
 }
 
 .dark-mode .btn-theme {
-  background-color: #66b2ff;
-  color: #121212;
+  background-color: #00274e;
+  color: #ffffff;
+}
+
+@media print {
+  .toggle-btn, /* Hides the entire toggle button container */
+  .btn-theme,  /* Hides the theme toggle button */
+  .btn-lang,   /* Hides the language toggle button */
+  .btn-primary { /* Hides the download PDF button */
+    display: none;
+  }
 }

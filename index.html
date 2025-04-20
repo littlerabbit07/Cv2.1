@@ -14,7 +14,7 @@
   <div class="toggle-btn d-flex justify-content-between">
     <button class="btn-theme" onclick="toggleTheme()">🌙 Modo Noche</button>
     <button class="btn-lang" onclick="toggleLanguage()">🌐 Cambiar Idioma</button>
-    <button id="download-pdf" class="btn btn-primary">📄 Descargar PDF</button>
+    <button class="btn btn-primary" onclick="window.location.href='Gerónimo Ríos Pisoni - CV.pdf'" download>📄 Descargar PDF</button>
   </div>
 
   <div class="container py-5">
@@ -61,8 +61,8 @@
       <ul>
         <li data-lang="es"><strong>Secundario:</strong> Perito Mercantil con orientación en Computación (2009)</li>
         <li data-lang="en" style="display: none;"><strong>High School:</strong> Business Expert with a focus on Computing (2009)</li>
-        <li data-lang="es"><strong>Instituto Inglés:</strong> 6 Años (2009)</li>
-        <li data-lang="en" style="display: none;"><strong>English Institute:</strong> 6 Years (2009)</li>
+        <li data-lang="es"><strong>Instituto Inglés:</strong> 6 Años Completo (2009)</li>
+        <li data-lang="en" style="display: none;"><strong>English Institute:</strong> 6 Years Completed (2009)</li>
         <li data-lang="es"><strong>Universitario:</strong> Inconcluso - Analista en Sistemas de Información – UTN, La Plata (2010)</li>
         <li data-lang="en" style="display: none;"><strong>University:</strong> Incomplete - Information Systems Analyst – UTN, La Plata (2010)</li>
         <li data-lang="es"><strong>Curso:</strong> Redes Cisco – FRLP UTN, La Plata (2017 - 2018)</li>
@@ -88,11 +88,13 @@
     </div>
 
     <div class="mb-5">
-      <h3 class="section-title">Experiencia Laboral</h3>
-      <p><strong></strong></p>
+      <h3 class="section-title" data-lang="es">Experiencia Laboral</h3>
+      <h3 class="section-title" data-lang="en" style="display: none;">Work Experience</h3>
       <ul class="two-columns">
-        <li>Atención al público, Caja, Proveedores, Presupuestos(Imprenta Digital)</li>
-        <li>Gestion cobros(Rapipago)</li>
+        <li data-lang="es">Atención a Clientes, Presupuestos,<br> Impresiones en gran formato (Imprenta Digital) 2 años</li>
+        <li data-lang="en" style="display: none;">Customer Service, Budgeting,<br> Large Format Printing (Digital Printing) 2 years</li>
+        <li data-lang="es">Gestión cobros (Rapipago)</li>
+        <li data-lang="en" style="display: none;">Payment Management (Rapipago)</li>
       </ul>
     </div>
 
@@ -129,7 +131,7 @@
         }
       });
 
-      // Save language preference
+      // Toggle language attribute and save preference
       const currentLang = document.documentElement.lang;
       const newLang = currentLang === 'es' ? 'en' : 'es';
       document.documentElement.lang = newLang;
@@ -143,10 +145,11 @@
         document.body.classList.add('dark-mode');
       }
 
-      const savedLanguage = localStorage.getItem('language');
-      if (savedLanguage) {
-        document.documentElement.lang = savedLanguage;
-        toggleLanguage(); // Ensure the correct language is displayed
+      const savedLanguage = localStorage.getItem('language') || 'es'; // Default to Spanish
+      document.documentElement.lang = savedLanguage;
+
+      if (savedLanguage === 'en') {
+        toggleLanguage(); // Ensure English is displayed if saved
       }
     };
 
